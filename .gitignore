@@ -1,0 +1,10 @@
+*.bak
+error_log
+log/*
+journal/*
+servers/*
+servers2/*
+servers-old
+servers.xml
+log.tar.gz
+*~
