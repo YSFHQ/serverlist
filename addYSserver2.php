@@ -68,14 +68,15 @@ else
 	{
 		$sf = new Serversf();
 		//$ys->setVersion (20080220);
-		$sf->setVersion ($ys->getVer());
-		$sf->setMissile ($ys->getMissile());
-		$sf->setWeapon  ($ys->getWeapon());
-		$sf->setMap     ($ys->getMap());
+        $ys->packetDecode();
+		$sf->setVersion ($ys->version);
+		$sf->setMissile ($ys->missile);
+		$sf->setWeapon  ($ys->weapon);
+		$sf->setMap     ($ys->map);
 		$a = $ys->getUserList();
 		$sf->setUsers   ($a[count($a)-2]);
 		$sf->setFlying  ($a[count($a)-1]);
-		$sf->setWeather ($ys->getWeather());
+		$sf->setWeather ($ys->weather);
 		$sf->setIsOnline("Online");
 		$sf->setIp         ($_POST["ip"]);
 		$sf->setPort       ($_POST["port"]);
@@ -110,7 +111,7 @@ else
 		echo "Your server is offline, I cannot add it to the list.";
 	}
 }
-@header('Refresh: 6; URL=index.php');
+//@header('Refresh: 6; URL=index.php');
 echo "<br><br><font color='#CC0000'><b>New rule:<br>";
 $message = (validateIpAddress($_POST["ip"])? "Your server will be automatically deleted once offline. Use a dyndns or an other no-ip system if you want to keep your server in the list." : "Your server will be automatically deleted after 8 days of inactivity.");
 echo $message;

@@ -14,10 +14,10 @@ else
 if  (time()-($sf->timestamp)>300)//300
 	ys_params($_GET["ip"],$_GET["port"],$timeout,$sf,$sf->version);
 	
-// PROTECTION POUR SERVER QUI N EXISTE PAS -> non vide?
+// PROTECTION POUR SERVER QUI N EXISTE PAS -> non vide? //<<DA FUCK BRAH? I DON'T SPEAK NINTENDO!
 
 $weathert = explode(":",$sf->weather);
-$daynight = ($weathert[0]==1) ? "day" : "night";
+$daynight = ($weathert[0]<=65536) ? "day" : "night"; //Was ...[0]==1, which is incorrect. YSF Lighting is 0-65536 == Day, 65537 > ... == Night. ;)
 $blackout = ($weathert[1]==1) ? "blackout_on" : "blackout_off";
 $coll     = ($weathert[2]==1) ? "collisions_on" : "collisions_off";
 $landev   = ($weathert[3]==1) ? "landev_on" : "landev_off";

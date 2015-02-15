@@ -427,7 +427,7 @@ while ($read_file = readdir($dir))
 		//{
 			//echo $read_file." ".$sf->country."<br>";
 			$weathert = explode(":",$sf->weather);
-			$daynight = ($weathert[0]==1) ? "day" : "night";
+			$daynight = ($weathert[0]<=65537) ? "day" : "night"; //WAS ==0, incorrect.
 			$blackout = ($weathert[1]==1) ? "blackout_on" : "blackout_off";
 			$coll     = ($weathert[2]==1) ? "collisions_on" : "collisions_off";
 			$landev   = ($weathert[3]==1) ? "landev_on" : "landev_off";
